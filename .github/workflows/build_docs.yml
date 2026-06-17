@@ -52,7 +52,6 @@ jobs:
         run: |
           git diff --quiet || git stash --quiet
           git checkout -B "gh-docs-${{steps.extract_branch.outputs.branch}}"
-          git rebase "${{steps.extract_branch.outputs.branch}}"
           
           if git stash list | grep -q "stash@{0}"; then
             git stash pop --quiet || { echo "Unexpected conflict during stash."; exit 1; }

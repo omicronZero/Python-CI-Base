@@ -41,8 +41,10 @@ jobs:
 
       - name: Run tests
         run: pytest --cov=myapp --cov-report=xml:cover/report.xml
-        
-      - name: Upload test coverage
-        uses: codecov/codecov-action@v4
+
+      - name: Upload test coverage as artifact
+        uses: actions/upload-artifact@v7
         with:
-          file: ./coverage.xml
+          name: coverage.xml
+          path: cover/report.xml
+          archive: false
