@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ruff mypy pytest pytest-cov
+          pip install ruff mypy pytest pytest-cov pytest-markdown-summary
           pip install -e .
 
       - name: Install pyproject.toml
@@ -40,11 +40,10 @@ jobs:
         run: mypy myapp
 
       - name: Run tests
-        run: pytest --cov=myapp --cov-report=xml:cover/report.xml
-
-      - name: Upload test coverage as artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: coverage.xml
-          path: cover/report.xml
-          archive: false
+        run: |
+          mkdir summary
+          pytest --cov=myapp --cov-report=markdown-append:summary/coverage.md --markdown-summary-file=summary/summary.md
+          echo -e "# Coverage\n" >> $GITHUB_STEP_SUMMARY
+          cat summary/coverage.md >> $GITHUB_STEP_SUMMARY
+          echo -e "# Summary\n" >> $GITHUB_STEP_SUMMARY
+          cat summary/summary.md >> $GITHUB_STEP_SUMMARY
