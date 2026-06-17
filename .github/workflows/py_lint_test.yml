@@ -45,5 +45,5 @@ jobs:
           pytest --cov=myapp --cov-report=markdown-append:summary/coverage.md --markdown-summary-file=summary/summary.md
           echo -e "# Summary\n" >> $GITHUB_STEP_SUMMARY
           cat summary/summary.md >> $GITHUB_STEP_SUMMARY
-          echo -e "# Coverage\n" >> $GITHUB_STEP_SUMMARY
+          echo -e "\n# Coverage\n" >> $GITHUB_STEP_SUMMARY
           cat summary/coverage.md >> $GITHUB_STEP_SUMMARY
