@@ -2,7 +2,12 @@
 
 The template sets up a simple continuous integration-pipeline for Python 3.14.
 
-For every push and pull request, linting, format checking, and tests are invoked.
+For every push and pull request, linting, format checking, static type checking, and tests are invoked:
+* Ruff: Linting, Formatting
+* MyPy: Code checking
+* Tests: PyTest (with coverage)
+
+The test summary and coverage are reported as an artifact.
 
 For every push and pull request to the main/master and dev branches, a documentation is built using sphinx and deployed
 to a respective separate branch "gh-docs-<dev/main/master>".
