@@ -14,7 +14,7 @@ dynamic = ["version"]
 description = ""
 readme = "README.md"
 requires-python = ">=3.14"
-license = { file = "LICENSE.txt" }
+license-files = ["LICEN[CS]E"]
 # TODO: adjust keywords
 keywords = []
 
