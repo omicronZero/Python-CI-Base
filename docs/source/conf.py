@@ -63,4 +63,4 @@ exclude_patterns = []
 # note that pydata requires `pip install pydata-sphinx-theme`. If you change the theme, change the
 # `.github/workflows/check_and_deploy.yml` step for the theme setup accordingly
 html_theme = 'pydata_sphinx_theme'
-html_static_path = ['_static']
+# html_static_path = ['_static']
