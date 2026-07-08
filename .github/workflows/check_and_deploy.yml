@@ -10,6 +10,7 @@ on:
 
 jobs:
   test:
+    name: Lint, Check formatting, Static Type-Check, Test
     runs-on: ubuntu-latest
 
     steps:
@@ -49,25 +50,29 @@ jobs:
           echo -e "\n# Coverage\n" >> $GITHUB_STEP_SUMMARY
           cat summary/coverage.md >> $GITHUB_STEP_SUMMARY
 
-  build:
-    name: Build project
-    runs-on: ubuntu-latest
-    env:
-      # TODO: replace MYAPP with the name of your app
-      SETUPTOOLS_SCM_OVERRIDES_FOR_MYAPP: '{local_scheme = "no-local-version-strict"}'
+# TODO: uncomment if you want to automate deployment to TestPyPI and PyPI
 
-    steps:
-      - uses: actions/checkout@v7
-        with:
-            fetch-depth: 0
-
-      - uses: hynek/build-and-inspect-python-package@v2
-
-# TODO: comment out if you want to automate deployment to TestPyPI and PyPI
+#  # we may build and publish to TestPyPI. We accept local versions rather than
+#  build_for_testpypi:
+#    name: Build project for TestPyPI
+#    runs-on: ubuntu-latest
+#    env:
+#      # TODO: replace MYAPP with the escaped project.name from pyproject.toml (upper-case everything, replace '.', '-' with '_', see PEP 503)
+#      SETUPTOOLS_SCM_OVERRIDES_FOR_MYAPP: '{local_scheme = "no-local-version-strict"}'
+#
+#    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+#
+#    steps:
+#      - uses: actions/checkout@v7
+#        with:
+#            fetch-depth: 0
+#
+#      - uses: hynek/build-and-inspect-python-package@v2
+#
 #  publish-to-test-pypi:
 #    name: Publish to TestPyPI
 #    runs-on: ubuntu-latest
-#    needs: [build, test]
+#    needs: [build_for_testpypi, test]
 #
 #    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
 #
@@ -92,10 +97,24 @@ jobs:
 #        with:
 #          repository-url: https://test.pypi.org/legacy/
 #
+#  # we may build and publish to PyPI
+#  build_for_pypi:
+#    name: Build project for PyPI
+#    runs-on: ubuntu-latest
+#
+#    if: github.event_name == 'release'
+#
+#    steps:
+#      - uses: actions/checkout@v7
+#        with:
+#            fetch-depth: 0
+#
+#      - uses: hynek/build-and-inspect-python-package@v2
+#
 #  publish-to-pypi:
 #    name: Publish to PyPI
 #    runs-on: ubuntu-latest
-#    needs: [build, test]
+#    needs: [build_for_pypi, test]
 #
 #    if: github.event_name == 'release'
 #

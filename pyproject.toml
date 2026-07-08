@@ -32,11 +32,6 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 
-[dependency-groups]
-testing = ["pytest", "pytest-cov"]
-linting = ["ruff"]
-typecheck = ["mypy"]
-
 # configure ruff
 [tool.ruff]
 line-length = 120
@@ -57,6 +52,9 @@ quote-style = "single"
 [tool.mypy]
 python_version = "3.14"
 strict = true
+
+# configurations for setuptools-scm. This section is required for the project to be built correctly
+[tool.setuptools_scm]
 
 [project.scripts]
 app = 'myapp.app:main'
