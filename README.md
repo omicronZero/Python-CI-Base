@@ -12,13 +12,25 @@ The test summary and coverage are reported as an artifact.
 For every push and pull request to the main/master and dev branches, a documentation is built using sphinx and deployed
 to a respective separate branch "gh-docs-<dev/main/master>".
 
+Deployment to PyPI and TestPyPI is optional (see below).
+
 # Setting up the project
 
 * Either set up an environment with Python 3.14 or change the respective version strings (Look for regex: "3\.?14")
   where adequate
 * On your repository under Settings/Branches, check that merging only passes if all checks from linting, tests, etc.
   pass
-* Replace ``myapp`` with the name of your app on all files and ``AUTHOR`` with your name
+* Replace ``myapp`` with the name of your app on all files and ``AUTHOR`` with your name 
+
+If you want to enable automatic deployment to PyPI, proceed with the following steps:
+
+* Versioning is performed via [setuptools-scm](https://setuptools-scm.readthedocs.io/en/latest/) which reads the package 
+  versions from metadata, e.g., from your git commits. Please read up on it before issuing a public release on PyPI.
+* Set up your [PyPI](https://pypi.org/manage/account/publishing/) and [TestPyPI](https://test.pypi.org/manage/account/publishing/) Trusted Publisher Management publishers.<br/>
+  Note that your project name **must** match the value you entered in the `project.name`-field in the `pyproject.toml`
+* Uncomment the respective lines in the [.github/workflows/check_and_deploy.yml](.github/workflows/check_and_deploy.yml) file.<br/>
+  Once you enable it, the default configuration is to publish to TestPyPI from the `main`, `master`, and `testing/deployment` 
+  branches, and to PyPI once you perform a published release on GitHub.
 
 # License (MIT-0)
 

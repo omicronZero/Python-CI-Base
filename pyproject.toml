@@ -4,10 +4,12 @@ requires = ["setuptools", "setuptools.scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-# TODO: adjust myapp
+# TODO: adjust myapp. This name *must* match your package's name on PyPI and TestPyPI if you're deploying to them
 name = "myapp"
-# TODO: adjust version
-version = "0.1.0"
+
+# the version is automatically determined using setuptools.scm
+dynamic = ["version"]
+
 # TODO: adjust description
 description = ""
 readme = "README.md"
