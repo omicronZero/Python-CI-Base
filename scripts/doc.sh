@@ -6,6 +6,7 @@ rm -rf docs/build
 rm -rf docs/source/_autogen
 
 # build ReST from source
+# TODO: replace myapp
 sphinx-apidoc -o docs/source/_autogen myapp
 
 # build documentation from ReST
