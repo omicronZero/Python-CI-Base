@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         # note that we also install the sphinx template, here. If you change the template (see `docs/source/conf.py`)
         run: |
-          pip install sphinx pydata-sphinx-theme
+          pip install sphinx pydata-sphinx-theme setuptools-scm
 
       - name: Sphinx build
         run: |
