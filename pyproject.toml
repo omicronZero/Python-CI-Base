@@ -4,8 +4,8 @@ requires = ["setuptools", "setuptools.scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-# TODO: adjust myapp. This name *must* match your package's name on PyPI and TestPyPI if you're deploying to them
-name = "myapp"
+# TODO: adjust python_ci_base. This name *must* match your package's name on PyPI and TestPyPI if you're deploying to them
+name = "python_ci_base"
 
 # the version is automatically determined using setuptools.scm
 dynamic = ["version"]
@@ -53,8 +53,11 @@ quote-style = "single"
 python_version = "3.14"
 strict = true
 
+[tool.setuptools]
+packages = ["python_ci_base"]
+
 # configurations for setuptools-scm. This section is required for the project to be built correctly
 [tool.setuptools_scm]
 
 [project.scripts]
-app = 'myapp.app:main'
+app = "python_ci_base.app:main"

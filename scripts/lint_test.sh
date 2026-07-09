@@ -10,5 +10,5 @@ echo Running Ruff/Format Diff...
 ruff format --diff --target-version=py314
 
 echo Running MyPy...
-# TODO: change "myapp"
-mypy myapp
+# TODO: change "python_ci_base"
+mypy python_ci_base

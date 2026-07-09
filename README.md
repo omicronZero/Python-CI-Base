@@ -20,7 +20,7 @@ Deployment to PyPI and TestPyPI is optional (see below).
   where adequate
 * On your repository under Settings/Branches, check that merging only passes if all checks from linting, tests, etc.
   pass
-* Replace ``myapp`` with the name of your app on all files and ``AUTHOR`` with your name 
+* Replace ``python_ci_base`` with the name of your app on all files and ``AUTHOR`` with your name 
 
 If you want to enable automatic deployment to PyPI, proceed with the following steps:
 

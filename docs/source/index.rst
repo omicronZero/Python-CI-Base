@@ -1,4 +1,4 @@
-myapp documentation
+python_ci_base documentation
 ===========================
 
 
