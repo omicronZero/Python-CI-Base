@@ -9,8 +9,9 @@ For every push and pull request, linting, format checking, static type checking,
 
 The test summary and coverage are reported as an artifact.
 
-For every push and pull request to the main/master and dev branches, a documentation is built using sphinx and deployed
-to a respective separate branch "gh-docs-<dev/main/master>".
+For every push and pull request to the main/master and dev branches, a documentation may be built using sphinx and deployed
+to a respective separate branch "gh-docs-<dev/main/master>". To do so, move the [templates/build_docs.yml](./templates/build_docs.yml) to [.github/workflows](./.github/workflows).
+Otherwise, you can set up your own documentation publishing on ReadTheDocs (which is the only external documentation provider supported for now).
 
 Deployment to PyPI and TestPyPI is optional (see below).
 
