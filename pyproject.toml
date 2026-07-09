@@ -33,7 +33,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-docs = ['setuptools', 'setuptools_scm']
+docs = ['pydata_sphinx_theme', 'setuptools', 'setuptools_scm']
 
 # configure ruff
 [tool.ruff]
