@@ -37,7 +37,7 @@ def extract_info(*path: str, default: str = '') -> Any:
     return current
 
 
-# TODO: adjust copyright and optionally the other fields below
+# TODO: adjust copyright and optionally the other fields below. Use '\xa9' for the copyright sign
 copyright = ''
 
 project = extract_info('project', 'name')
