@@ -1,5 +1,5 @@
 # install requirements
-pip install ruff mypy pytest pytest-cov pytest-markdown-summary --upgrade --quiet
+pip install ruff mypy --upgrade --quiet
 
 # run ruff and mypy
 
