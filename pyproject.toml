@@ -62,5 +62,6 @@ packages = ["python_ci_base"]
 # configurations for setuptools-scm. This section is required for the project to be built correctly
 [tool.setuptools_scm]
 
-[project.scripts]
-app = "python_ci_base.app:main"
+# TODO: You can provide the entry points into your app, here
+# [project.scripts]
+# app = "python_ci_base.app:main"
