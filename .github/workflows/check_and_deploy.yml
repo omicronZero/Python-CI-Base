@@ -43,12 +43,25 @@ jobs:
 
       - name: Run tests
         run: |
-          mkdir summary
+          set +e
+          mkdir summary > /dev/null 2>&1 || echo
           pytest --cov=python_ci_base --cov-report=markdown-append:summary/coverage.md --markdown-summary-file=summary/summary.md
-          echo -e "# Summary\n" >> $GITHUB_STEP_SUMMARY
-          cat summary/summary.md >> $GITHUB_STEP_SUMMARY
-          echo -e "\n# Coverage\n" >> $GITHUB_STEP_SUMMARY
-          cat summary/coverage.md >> $GITHUB_STEP_SUMMARY
+          EXIT_CODE=$?
+          
+          set -e
+          
+          if (( $EXIT_CODE == 5 )); then
+            echo "The test suite was empty. No summary generated."
+            echo -e "# Summary\n" >> $GITHUB_STEP_SUMMARY
+            echo -e "\n# Coverage\n" >> $GITHUB_STEP_SUMMARY
+          elif (( $EXIT_CODE == 0 )); then
+            echo -e "# Summary\n" >> $GITHUB_STEP_SUMMARY
+            cat summary/summary.md >> $GITHUB_STEP_SUMMARY
+            echo -e "\n# Coverage\n" >> $GITHUB_STEP_SUMMARY
+            cat summary/coverage.md >> $GITHUB_STEP_SUMMARY
+          else
+            exit $ExitCode
+          fi
 
 # TODO: uncomment if you want to automate deployment to TestPyPI and PyPI
 
