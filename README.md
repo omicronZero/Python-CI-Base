@@ -2,9 +2,11 @@
 
 The template sets up a simple continuous integration-pipeline for Python 3.14.
 
-For every push and pull request, linting, format checking, static type checking, and tests are invoked:
+For every pre-commit, push and pull request, linting, format checking, and static type checking are invoked:
 * Ruff: Linting, Formatting
 * MyPy: Code checking
+
+Additionally, tests are run for pushes and pull requests (but not pre-hook):
 * Tests: PyTest (with coverage)
 
 The test summary and coverage are reported as an artifact.
@@ -23,6 +25,11 @@ Deployment to PyPI and TestPyPI is optional (see below).
   pass
 * Replace ``python_ci_base`` with the name of your app on all files and ``AUTHOR`` with your name 
 * Always use typing (if not, delete the py.typed file inside your package)
+* Install pre-commit hooks:
+  ```
+  pip install pre-commit
+  pre-commit install
+  ```
 
 If you want to enable automatic deployment to PyPI, proceed with the following steps:
 
