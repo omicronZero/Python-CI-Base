@@ -46,6 +46,7 @@ jobs:
           set +e
           mkdir summary > /dev/null 2>&1 || echo
           
+          touch summary/summary.md
           coverage run -m pytest tests --markdown-summary-file=summary/summary.md
           coverage report --format=markdown > summary/coverage.md
           
@@ -59,7 +60,7 @@ jobs:
             echo -e "\n# Coverage\n" >> $GITHUB_STEP_SUMMARY
           elif (( $EXIT_CODE == 0 )); then
             echo -e "# Summary\n" >> $GITHUB_STEP_SUMMARY
-            cat summary/summary.md >> $GITHUB_STEP_SUMMARY
+            [ -f summary/summary.md] && cat summary/summary.md >> $GITHUB_STEP_SUMMARY
             echo -e "\n# Coverage\n" >> $GITHUB_STEP_SUMMARY
             cat summary/coverage.md >> $GITHUB_STEP_SUMMARY
           else
