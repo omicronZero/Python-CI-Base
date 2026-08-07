@@ -65,3 +65,10 @@ packages = ["python_ci_base"]
 # TODO: You can provide the entry points into your app, here
 # [project.scripts]
 # app = "python_ci_base.app:main"
+
+[tool.coverage.run]
+# TODO: replace "python_ci_base"
+source = ["python_ci_base"]
+omit = [
+    "tests/*"
+]

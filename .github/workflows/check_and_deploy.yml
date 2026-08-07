@@ -45,7 +45,10 @@ jobs:
         run: |
           set +e
           mkdir summary > /dev/null 2>&1 || echo
-          pytest --cov=python_ci_base --cov-report=markdown-append:summary/coverage.md --markdown-summary-file=summary/summary.md
+          
+          coverage run -m pytest tests --markdown-summary-file=summary/summary.md
+          coverage report --format=markdown > summary/coverage.md
+          
           EXIT_CODE=$?
           
           set -e
